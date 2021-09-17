@@ -152,8 +152,29 @@ input, select {
       flex-direction: column;
       margin: 0 40px 0;
     }
+    .p h3{
+      padding-bottom: 10px;
+      color: #8B4513;
+    }
+
+
     .table{
       display: flex;
+    }
+    .es34{
+      padding-right: 25px;
+      padding-bottom: 15px;
+    }
+
+    .delete{
+      padding-bottom: 30px;
+    }
+
+    .button{
+      border: 1px solid 	#CCFF33;
+      border-radius: 20px;
+      background-color: 	#CCFF33;
+      padding: 5px;
     }
 
     footer{
@@ -194,13 +215,13 @@ input, select {
       <div class="p">
         <h3>{{$task->title}}</h3>
         <div class="table">
-          <p>{!! nl2br(htmlspecialchars($task->content)) !!}</p>
+          <p class="es34">{!! nl2br(htmlspecialchars($task->content)) !!}</p>
           <p>{!! nl2br(htmlspecialchars($task->amount)) !!}</p>
         </div>
         <div class="delete">
           <form action="/delete" method="GET">
           @csrf
-            <input type="submit" value="削除">
+            <input class="button" type="submit" value="削除">
             <input type="hidden" name="taskId" value="{{$task->id}}">
           </form>
         </div>
