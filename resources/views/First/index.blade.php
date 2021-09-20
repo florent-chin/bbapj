@@ -150,11 +150,12 @@ input, select {
 
     .p{
       flex-direction: column;
-      margin: 0 40px 0;
+      margin: 0 3vw 0;
+      
     }
     .p h3{
       padding-bottom: 10px;
-      color: #8B4513;
+      color:#993300;
     }
 
 
@@ -189,6 +190,41 @@ input, select {
       float: right;
       font-size: 12px;
       padding-top: 2px;
+    }
+
+    @media screen and (max-width:768px){
+      header{
+        height: 10vh;
+      }
+
+      .create input{
+        height: 3vh;
+        width: 20vw;
+      }
+      .create textarea{
+        height: 6vh;
+        width: 20vw;
+      }
+      .create{
+      padding: 0 20vw 60px;
+      }
+    }
+    @media screen and (max-width:480px){
+      header{
+        height: 10vh;
+      }
+
+      .create input{
+        height: 3vh;
+        width: 20vw;
+      }
+      .create textarea{
+        height: 6vh;
+        width: 20vw;
+      }
+      .create{
+      padding: 0 20vw 60px;
+      }
     }
   </style>
 </head>
