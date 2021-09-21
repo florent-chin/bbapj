@@ -95,12 +95,12 @@ input, select {
 
 
     header{
-      height: 15vh;
+      height: 14vh;
       background-color: #F0E68C;
     }
     header h1{
       text-align: center;
-      padding: 6vh 0;
+      padding: 5vh 0;
       color: rgba(110, 49, 8, 0.87);
       
     }
@@ -152,7 +152,7 @@ input, select {
     .main{
       height: auto;
       display: flex;
-      width: 90%;
+      width: 98%;
       margin: 0 auto;
       flex-wrap: wrap;
     }
@@ -235,7 +235,7 @@ input, select {
         width: 20vw;
       }
       .create{
-      padding: 0 20vw 60px;
+      padding: 0 15vw 60px;
       }
       .create button{
         margin: 0 auto;
