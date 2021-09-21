@@ -100,7 +100,7 @@ input, select {
     }
     header h1{
       text-align: center;
-      padding: 20px;
+      padding: 6vh 0;
       color: rgba(110, 49, 8, 0.87);
       
     }
@@ -121,8 +121,8 @@ input, select {
 
     .create input{
       height: 5vh;
-      width: 20vw;
-      margin-bottom: 10px;
+      width: 18vw;
+      margin-bottom: 20px;
       margin-left: 7vw;
       border-radius: 5px;
       border: 1px solid black;
@@ -141,10 +141,19 @@ input, select {
       padding:5px 10px;
     }
 
+    .alart{
+      margin-bottom: 20px;      
+    }
+    .alart p{
+      font-size: 14px;
+      color: red;
+    }
+
     .main{
       height: auto;
       display: flex;
-      padding: 0 30px 40px;
+      width: 90%;
+      margin: 0 auto;
       flex-wrap: wrap;
     }
 
@@ -193,37 +202,46 @@ input, select {
     }
 
     @media screen and (max-width:768px){
-      header{
-        height: 10vh;
-      }
-
       .create input{
-        height: 3vh;
-        width: 20vw;
-      }
+      height: 3vh;
+      width: 20vw;
+      margin-bottom: 10px;
+      margin-left: 16vw;
+      border-radius: 5px;
+      border: 1px solid black;
+    }
       .create textarea{
         height: 6vh;
         width: 20vw;
       }
       .create{
       padding: 0 20vw 60px;
+      }
+      .create button{
+        margin: 0 auto;
       }
     }
     @media screen and (max-width:480px){
-      header{
-        height: 10vh;
-      }
-
       .create input{
-        height: 3vh;
-        width: 20vw;
-      }
+      height: 3vh;
+      width: 20vw;
+      margin-bottom: 10px;
+      margin-left: 16vw;
+      border-radius: 5px;
+      border: 1px solid black;
+    }
       .create textarea{
         height: 6vh;
         width: 20vw;
       }
       .create{
       padding: 0 20vw 60px;
+      }
+      .create button{
+        margin: 0 auto;
+      }
+      .alart p{
+        font-size: 11px;
       }
     }
   </style>
@@ -237,10 +255,16 @@ input, select {
 
   <div class="content">
     <div class="create">
+      <div class="alart">
+        <p>*料理名の頭文字はひらがなから始めてください。</p>
+        <br>
+        <p>×揚げ出し豆腐->〇あげ出し豆腐</p>
+      </div>
       <form action="/create" method="POST">
       @csrf
       <input type="text" height="20px" name="newTask" placeholder="料理名">
       <br>
+
       <textarea name="newTask2" id="" cols="30" rows="5" placeholder="材料"></textarea>
       <textarea name="newTask3" id="" cols="15" rows="5" placeholder="量"></textarea>
       <button>追加</button>
