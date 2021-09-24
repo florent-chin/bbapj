@@ -112,18 +112,19 @@ input, select {
 
     .content{
       background-color: #FFFFDD;
-      padding-top: 10vh;
+      padding-top: 5vh;
     }
 
     .create{
-      padding: 0 28vw 60px;
+      margin: 0 auto 10vh;
+      width: 70%;
+      text-align: center;
     }
 
     .create input{
       height: 5vh;
-      width: 18vw;
-      margin-bottom: 20px;
-      margin-left: 7vw;
+      width: 200px;
+      margin: 0 auto 20px;
       border-radius: 5px;
       border: 1px solid black;
     }
@@ -206,7 +207,6 @@ input, select {
       height: 3vh;
       width: 20vw;
       margin-bottom: 10px;
-      margin-left: 16vw;
       border-radius: 5px;
       border: 1px solid black;
     }
@@ -226,7 +226,6 @@ input, select {
       height: 3vh;
       width: 20vw;
       margin-bottom: 10px;
-      margin-left: 16vw;
       border-radius: 5px;
       border: 1px solid black;
     }
@@ -262,10 +261,10 @@ input, select {
       </div>
       <form action="/create" method="POST">
       @csrf
-      <input type="text" height="20px" name="newTask" placeholder="料理名">
+      <input type="text" name="newTask" placeholder="料理名">
       <br>
 
-      <textarea name="newTask2" id="" cols="30" rows="5" placeholder="材料"></textarea>
+      <textarea name="newTask2" id="" cols="25" rows="5" placeholder="材料"></textarea>
       <textarea name="newTask3" id="" cols="15" rows="5" placeholder="量"></textarea>
       <button>追加</button>
       </form>
