@@ -60,6 +60,7 @@ a {
 ins {
     background-color:#ff9;
     color:#000;
+    
     text-decoration:none;
 }
 mark {

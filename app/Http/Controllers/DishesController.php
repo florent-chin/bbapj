@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class DishesController extends Controller
 {
     public function index(){
-        $items=Dish::all();
+        $items = Dish::orderBy('title','asc')->get();
         return view('First.index',['items'=>$items]);
     }
 
