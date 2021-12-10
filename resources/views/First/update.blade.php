@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Kaisei+Opti&family=Pacifico&display=swap" rel="stylesheet">
-
-
-
-
-
-
-  <!--css style-->
   <style>
+    
     html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -97,8 +92,11 @@ hr {
 input, select {
     vertical-align:middle;
 }
-  
 
+
+body{
+  background-color: #FFFFDD;
+}
 
     header{
       height: 14vh;
@@ -119,18 +117,14 @@ input, select {
     .content{
       background-color: #FFFFDD;
       padding-top: 5vh;
+      text-align:center;
+      margin-top: 40px;
     }
 
     .create{
       margin: 0 auto 10vh;
       width: 70%;
       text-align: center;
-    }
-    .create2{
-      margin: 0 auto 10vh;
-      width: 70%;
-      text-align: center;
-      display: none;
     }
 
     .create input{
@@ -162,69 +156,12 @@ input, select {
       color: red;
     }
 
-    .main{
-      height: auto;
-      display: flex;
-      width: 98%;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-
-    .p{
-      flex-direction: column;
-      margin: 0 3vw 0;
-      
-    }
-    .p h3{
-      padding-bottom: 10px;
-      color:#993300;
-    }
-
-
-    .table{
-      display: flex;
-    }
-
-    .es34{
-      padding-right: 25px;
-      padding-bottom: 15px;
-    }
-
-    .delete{
-      padding-bottom: 30px;
-    }
-
-    .button{
+    button{
       border: 1px solid 	#CCFF33;
-      border-radius: 20px;
-      background-color: 	#CCFF33;
-      padding: 5px;
-    }
-
-    .button2{
-      border: 1px solid 	#CCFF33;
-      border-radius: 20px;
+      border-radius: 10px;
       background-color: #FF99CC;
       padding: 5px;
-      margin-right: 20px;      
-    }
-
-    .delete_update{
-      display: flex;
-    }
-
-    footer{
-      background-color: black;
-      height: 5vh;
-    }
-    small{
-      color: white;
-      font-size: 10px;
-    }
-    .es{
-      float: right;
-      font-size: 12px;
-      padding-top: 2px;
+      margin-left: 20px;  
     }
 
     @media screen and (max-width:768px){
@@ -272,13 +209,12 @@ input, select {
 </head>
 
 <body>
-  <!--header-->
   <header>
     <h1><span>BBA</span> レシピ</h1>
   </header>
   <div class="content">
-    <!--追加部分-->
-    <div class="create">
+    <div class="create2">
+      @foreach ($items as $item)
       <div class="alart">
         <p>*料理名の頭文字はひらがなから始めてください。</p>
         <br>
@@ -286,53 +222,14 @@ input, select {
       </div>
       <form action="/create" method="POST">
       @csrf
-      <input type="text" name="newTask" placeholder="料理名">
+      <input type="text" name="newTask" value="{{$item->title}}" placeholder="料理名">
       <br>
-
-      <textarea name="newTask2" id="" cols="25" rows="5" placeholder="材料"></textarea>
-      <textarea name="newTask3" id="" cols="15" rows="5" placeholder="量"></textarea>
-      <button>追加</button>
+      <textarea name="newTask2" id="" cols="25" rows="5" placeholder="材料">{!! nl2br(htmlspecialchars($item->content)) !!}</textarea>
+      <textarea name="newTask3" id="" cols="15" rows="5" placeholder="量">{!! nl2br(htmlspecialchars($item->amount)) !!}</textarea>
+      <button>更新</button>
       </form>
+      @endforeach
     </div>
-    <!--表示部分-->
-    <div class="main">
-      <form action="/update" method="POST">
-      @csrf  
-        @foreach ($items as $task)
-        <div class="p">
-          <h3 name="titleGet">{{$task->title}}</h3>
-          <div class="table">
-            <p name="contentGet" class="es34">{!! nl2br(htmlspecialchars($task->content)) !!}</p>
-            <p name="amountGet">{!! nl2br(htmlspecialchars($task->amount)) !!}</p>
-          </div>
-          <div class="delete_update">
-            <div class="update">
-              <input onclick="location.href='/update'" class="button2" type="submit" value="変更">
-              <form action="/delete" method="GET">
-              @csrf
-                <input type="hidden" name="taskId_up" value="{{$task->id}}">
-                <input type="hidden" name="taskId" value="{{$task->id}}">
-              </form>
-            </div>
-      </form>
-            <div class="delete">
-              <form action="/delete" method="GET">
-              @csrf
-                <input class="button" type="submit" value="削除">
-                <input type="hidden" name="taskId" value="{{$task->id}}">
-              </form>
-            </div>
-          </div>
-        </div>
-        @endforeach  
-    </div>
-  </div>
-
-  <!--footer-->
-  <footer>
-    <small>&copy; 2021 masakimanZ.net</small>
-    <small class="es">gmail:huupmasari@gmail.com</small>
-  </footer>
+  </div>  
 </body>
-
 </html>
