@@ -121,25 +121,25 @@ body{
       margin-top: 40px;
     }
 
-    .create{
+    .create2{
       margin: 0 auto 10vh;
       width: 70%;
       text-align: center;
     }
 
-    .create input{
+    .create2 input{
       height: 5vh;
       width: 200px;
       margin: 0 auto 20px;
       border-radius: 5px;
       border: 1px solid black;
     }
-    .create textarea{
+    .create2 textarea{
       border-radius: 5px;
       border: 1px solid black;
     }
 
-    .create button{
+    .create2 button{
       margin-left: 20px;
       color: white;
       border-radius: 10px;
@@ -162,6 +162,10 @@ body{
       background-color: #FF99CC;
       padding: 5px;
       margin-left: 20px;  
+    }
+
+    .main{
+      text-align: center;
     }
 
     @media screen and (max-width:768px){
@@ -212,6 +216,17 @@ body{
   <header>
     <h1><span>BBA</span> レシピ</h1>
   </header>
+  <div class="main">
+    @foreach ($items as $task)
+    <div class="p">
+      <h3>{{$task->title}}</h3>
+      <div class="table">
+        <p class="es34">{!! nl2br(htmlspecialchars($task->content)) !!}</p>
+        <p>{!! nl2br(htmlspecialchars($task->amount)) !!}</p>
+      </div>
+    </div>
+    @endforeach  
+  </div>
   <div class="content">
     <div class="create2">
       @foreach ($items as $item)
@@ -224,8 +239,8 @@ body{
       @csrf
       <input type="text" name="newTask" value="{{$item->title}}" placeholder="料理名">
       <br>
-      <textarea name="newTask2" id="" cols="25" rows="5" placeholder="材料">{!! nl2br(htmlspecialchars($item->content)) !!}</textarea>
-      <textarea name="newTask3" id="" cols="15" rows="5" placeholder="量">{!! nl2br(htmlspecialchars($item->amount)) !!}</textarea>
+      <textarea name="newTask2" id="" cols="25" rows="5" placeholder="材料">{{$item->content}}</textarea>
+      <textarea name="newTask3" id="" cols="15" rows="5" placeholder="量">{{$item->amount}}</textarea>
       <button>更新</button>
       </form>
       @endforeach

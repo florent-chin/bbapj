@@ -42,6 +42,7 @@ class DishesController extends Controller
     {
         $taskId_up = $request->input("taskId_up");
         $item=Dish::where("id", $taskId_up)->first();
+        $item->delete();
         
         $items=["item"=>$item];
         return view('First.update',compact('items'));
