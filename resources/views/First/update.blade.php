@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Kaisei+Opti&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <style>
     
     html, body, div, span, object, iframe,
@@ -114,17 +115,48 @@ body{
       font-family: 'Pacifico', cursive;
     }
 
+    /*main*/
+    .fish{
+      display: flex;
+    }
+
+    .main{
+      margin-top: 100px;
+      margin-left: 150px;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .p{
+      flex-direction: column;
+      margin: 0 3vw 0;
+      text-align: center;
+    }
+    .p h3{
+      padding-bottom: 20px;
+      color:#993300;
+    }
+
+
+    .table{
+      display: flex;
+    }
+
+    .es34{
+      padding-right: 25px;
+      padding-bottom: 15px;
+    }
+
     .content{
       background-color: #FFFFDD;
-      padding-top: 5vh;
       text-align:center;
-      margin-top: 40px;
+      margin: 80px 15vw 0 auto;
     }
 
     .create2{
       margin: 0 auto 10vh;
       width: 70%;
-      text-align: center;
     }
 
     .create2 input{
@@ -137,15 +169,7 @@ body{
     .create2 textarea{
       border-radius: 5px;
       border: 1px solid black;
-    }
-
-    .create2 button{
-      margin-left: 20px;
-      color: white;
-      border-radius: 10px;
-      border: 1px solid	#F4A460;
-      background-color:#F4A460 ;
-      padding:5px 10px;
+      margin-left: 10px;
     }
 
     .alart{
@@ -156,16 +180,24 @@ body{
       color: red;
     }
 
-    button{
-      border: 1px solid 	#CCFF33;
-      border-radius: 10px;
-      background-color: #FF99CC;
-      padding: 5px;
-      margin-left: 20px;  
+    .meat{
+      display: flex;
     }
 
-    .main{
-      text-align: center;
+    button{
+      margin-left: 20px;
+      color: white;
+      border-radius: 10px;
+      border: 1px solid	#F4A460;
+      background-color:#F4A460 ;
+      padding:5px 10px;
+    }
+
+    i{
+      position: absolute;
+      top: 230px;
+      left: 45vw;
+      font-size: 20px;
     }
 
     @media screen and (max-width:768px){
@@ -216,34 +248,39 @@ body{
   <header>
     <h1><span>BBA</span> レシピ</h1>
   </header>
-  <div class="main">
-    @foreach ($items as $task)
-    <div class="p">
-      <h3>{{$task->title}}</h3>
-      <div class="table">
-        <p class="es34">{!! nl2br(htmlspecialchars($task->content)) !!}</p>
-        <p>{!! nl2br(htmlspecialchars($task->amount)) !!}</p>
+  <div class="fish">
+    <div class="main">
+      @foreach ($items as $task)
+      <div class="p">
+        <h3>{{$task->title}}</h3>
+        <div class="table">
+          <p class="es34">{!! nl2br(htmlspecialchars($task->content)) !!}</p>
+          <p>{!! nl2br(htmlspecialchars($task->amount)) !!}</p>
+        </div>
       </div>
+      @endforeach 
+      <i class="fas fa-angle-double-right fa-3x"></i> 
     </div>
-    @endforeach  
-  </div>
-  <div class="content">
-    <div class="create2">
-      @foreach ($items as $item)
-      <div class="alart">
-        <p>*料理名の頭文字はひらがなから始めてください。</p>
+    <div class="content">
+      <div class="create2">
+        @foreach ($items as $item)
+        <div class="alart">
+          <p>*料理名の頭文字はひらがなから始めてください。</p>
+          <br>
+          <p>×揚げ出し豆腐->〇あげ出し豆腐</p>
+        </div>
+        <form action="/create" method="POST">
+        @csrf
+        <input type="text" name="newTask" value="{{$item->title}}" placeholder="料理名">
         <br>
-        <p>×揚げ出し豆腐->〇あげ出し豆腐</p>
+        <div class="meat">
+          <textarea name="newTask2" id="" cols="25" rows="5" placeholder="材料">{{$item->content}}</textarea>
+          <textarea name="newTask3" id="" cols="15" rows="5" placeholder="量">{{$item->amount}}</textarea>
+          <button>更新</button>
+        </div>
+        </form>
+        @endforeach
       </div>
-      <form action="/create" method="POST">
-      @csrf
-      <input type="text" name="newTask" value="{{$item->title}}" placeholder="料理名">
-      <br>
-      <textarea name="newTask2" id="" cols="25" rows="5" placeholder="材料">{{$item->content}}</textarea>
-      <textarea name="newTask3" id="" cols="15" rows="5" placeholder="量">{{$item->amount}}</textarea>
-      <button>更新</button>
-      </form>
-      @endforeach
     </div>
   </div>  
 </body>

@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Kaisei+Opti&family=Pacifico&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!--css style-->
   <style>
@@ -93,6 +94,9 @@
     input, select {
         vertical-align:middle;
     }
+
+
+
   
     /*index.blade style*/
 
@@ -104,7 +108,6 @@
       text-align: center;
       padding: 5vh 0;
       color: rgba(110, 49, 8, 0.87);
-      
     }
     header span{
       font-size: 30px;
@@ -295,10 +298,10 @@
       @csrf  
         @foreach ($items as $task)
         <div class="p">
-          <h3 name="titleGet">{{$task->title}}</h3>
+          <h3>{{$task->title}}</h3>
           <div class="table">
-            <p name="contentGet" class="es34">{!! nl2br(htmlspecialchars($task->content)) !!}</p>
-            <p name="amountGet">{!! nl2br(htmlspecialchars($task->amount)) !!}</p>
+            <p class="es34">{!! nl2br(htmlspecialchars($task->content)) !!}</p>
+            <p>{!! nl2br(htmlspecialchars($task->amount)) !!}</p>
           </div>
           <div class="delete_update">
             <div class="update">
@@ -327,6 +330,13 @@
     <small>&copy; 2021 masakimanZ.net</small>
     <small class="es">gmail:huupmasari@gmail.com</small>
   </footer>
+
+  <script>
+    $('.button2').click(function(){
+      $('.create').hide();
+      $('.create2').show();
+    });
+  </script>
 </body>
 
 </html>
