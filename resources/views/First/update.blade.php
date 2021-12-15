@@ -201,44 +201,32 @@ body{
     }
 
     @media screen and (max-width:768px){
-      .create input{
-      height: 3vh;
-      width: 20vw;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid black;
-    }
-      .create textarea{
-        height: 6vh;
-        width: 20vw;
+      .fas{
+        display: none;
       }
-      .create{
-      padding: 0 20vw 60px;
+      .fish{
+        display:flex;
+        flex-flow: column;
       }
-      .create button{
-        margin: 0 auto;
+      .main{
+        width: 100px;
+        margin: 100px auto 0;
+        text-align: center;
       }
     }
     @media screen and (max-width:480px){
-      .create input{
-      height: 3vh;
-      width: 20vw;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid black;
-    }
-      .create textarea{
-        height: 6vh;
-        width: 20vw;
+      .fas{
+        display: none;
       }
-      .create{
-      padding: 0 15vw 60px;
+      .fish{
+        display:flex;
+        flex-flow: column;
       }
-      .create button{
-        margin: 0 auto;
+      .main{
+        text-align: center;
       }
-      .alart p{
-        font-size: 11px;
+      .content{
+        text-align: center;
       }
     }
   </style>
