@@ -307,7 +307,7 @@
             <div class="update">
               <form action="/update" method="POST">
               @csrf
-                <input onclick="location.href='/update'" class="button2" type="submit" value="変更">
+                <input onClick="return Check()" class="button2" type="submit" value="変更">
                 <input type="hidden" name="taskId_up" value="{{$task->id}}">
               </form>
             </div>
@@ -331,11 +331,15 @@
     <small class="es">gmail:huupmasari@gmail.com</small>
   </footer>
 
-  <script>
-    $('.button2').click(function(){
-      $('.create').hide();
-      $('.create2').show();
-    });
+  <script type="text/javascript">
+    function Check(){
+      var checked = confirm("「OK」をクリックすると元のレシピは削除されますがよろしいですか？");
+      if (checked == true) {
+          return true;
+      } else {
+          return false;
+      }
+    }
   </script>
 </body>
 
