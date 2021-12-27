@@ -315,7 +315,7 @@
             <div class="delete">
               <form action="/delete" method="GET">
               @csrf
-                <input class="button" type="submit" value="削除">
+                <input onClick="return Check2()" class="button" type="submit" value="削除">
                 <input type="hidden" name="taskId" value="{{$task->id}}">
               </form>
             </div>
@@ -334,6 +334,14 @@
   <script type="text/javascript">
     function Check(){
       var checked = confirm("「OK」をクリックすると元のレシピは削除されますがよろしいですか？");
+      if (checked == true) {
+          return true;
+      } else {
+          return false;
+      }
+    }
+    function Check2(){
+      var checked = confirm("レシピが削除されますがよろしいですか？");
       if (checked == true) {
           return true;
       } else {
